@@ -7,27 +7,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#000000" />
 
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+  <!-- PWA FILES -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- TOP BAR -->
   <header class="topbar">
-    <h1>EDUREELS</h1>
+    <h1 onclick="window.location.href='subjects.html'">EDUREELS</h1>
   </header>
 
+  <!-- REELS CONTAINER -->
   <main class="reels-container">
 
-    <!-- SAMPLE REELS (later Firebase videos) -->
+    <!-- SAMPLE VIDEOS (later Firebase) -->
     <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop></video>
     <video src="https://www.w3schools.com/html/movie.mp4" muted loop></video>
     <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop></video>
 
   </main>
 
+  <!-- JS -->
   <script src="app.js"></script>
 
+  <!-- SERVICE WORKER -->
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("service-worker.js");
