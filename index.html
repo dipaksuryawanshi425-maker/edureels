@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#000000" />
 
-  <!-- PWA FILES -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
 
@@ -22,17 +22,14 @@
     <h1 onclick="window.location.href='subjects.html'">EDUREELS</h1>
   </header>
 
-  <!-- REELS CONTAINER -->
+  <!-- REELS -->
   <main class="reels-container">
-
-    <!-- SAMPLE VIDEOS (later Firebase) -->
     <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop></video>
     <video src="https://www.w3schools.com/html/movie.mp4" muted loop></video>
     <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop></video>
-
   </main>
 
-  <!-- JS -->
+  <!-- MAIN JS -->
   <script src="app.js"></script>
 
   <!-- SERVICE WORKER -->
@@ -40,6 +37,27 @@
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("service-worker.js");
     }
+  </script>
+
+  <!-- 🔥 FORCE PWA INSTALL PROMPT (FINAL FIX) -->
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      setTimeout(() => {
+        if (deferredPrompt) {
+          if (confirm("Install EDUREELS App on your phone?")) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+              deferredPrompt = null;
+            });
+          }
+        }
+      }, 2000);
+    });
   </script>
 
 </body>
